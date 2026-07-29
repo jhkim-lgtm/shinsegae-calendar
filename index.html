@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="신세계백화점 마케팅 캘린더 — 백화점 마케터가 알아야 할 세일·기프팅·트렌드·컬처 모먼트">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏛️</text></svg>">
+<title>SHINSEGAE — 마케팅 캘린더</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;600&family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* 블랙앤화이트 + 신세계 골드 포인트 (#A48443 — shinsegae.com 실측 2026-07-29, GillSans·Garamond 세리프 아이덴티티)
+     폰트: Noto Sans KR + EB Garamond(사이트 Garamond 계열) + Noto Serif KR */
+  :root{
+    --bg:#FBFBFA; --card:#FFFFFF; --ink:#141414; --sub:#6B6B6B;
+    --line:rgba(20,20,20,.14); --line-soft:rgba(20,20,20,.07);
+    --point:#8F7136; --point-soft:rgba(143,113,54,.08);
+    --live:#8F7136; --live-bg:rgba(143,113,54,.1);
+    --dim:.45; --shadow:0 1px 2px rgba(20,20,20,.05),0 8px 28px rgba(20,20,20,.07);
+    --chip-on:#FFFFFF;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0E0E0E; --card:#181818; --ink:#F2F0EC; --sub:#9C9C9C;
+      --line:rgba(242,240,236,.16); --line-soft:rgba(242,240,236,.07);
+      --point:#CDB185; --point-soft:rgba(205,177,133,.12);
+      --live:#CDB185; --live-bg:rgba(205,177,133,.13);
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 32px rgba(0,0,0,.35);
+      --chip-on:#141414;
+    }
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Noto Sans KR","Apple SD Gothic Neo",-apple-system,"Malgun Gothic",sans-serif;
+    font-size:15px; line-height:1.68; -webkit-font-smoothing:antialiased;
+  }
+  .disp{font-family:"EB Garamond","Noto Serif KR",Georgia,serif; letter-spacing:.01em; font-weight:600}
+  .mono{font-family:"SF Mono",ui-monospace,Menlo,Consolas,monospace; font-variant-numeric:tabular-nums}
+
+  .wrap{max-width:1060px; margin:0 auto; padding:0 22px 90px}
+
+  header{padding:44px 0 30px; border-bottom:1px solid var(--ink)}
+  .byline{display:flex; align-items:center; gap:10px; margin-bottom:26px}
+  .byline .cap{font-size:10px; letter-spacing:.3em; text-transform:uppercase; color:var(--sub)}
+  .byline img{height:15px; width:auto; display:block; filter:invert(1)}
+  @media (prefers-color-scheme: dark){.byline img{filter:none}}
+  .eyebrow{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+    font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--sub); margin-bottom:16px}
+  .eyebrow b{color:var(--point); font-weight:700}
+  h1{margin:0; font-weight:700; font-size:clamp(32px,6vw,56px); line-height:1.14; letter-spacing:-.01em; text-wrap:balance}
+  h1 .en{display:block; font-weight:600; font-size:.3em; letter-spacing:.2em; color:var(--sub); text-transform:uppercase; margin-bottom:12px}
+  .lede{margin:18px 0 0; max-width:660px; color:var(--sub); font-size:15px}
+
+  .now{margin:34px 0 0; border:1px solid var(--point); background:var(--point-soft); border-radius:2px; padding:22px 24px}
+  .now-tag{display:inline-flex; align-items:center; gap:8px; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--point); font-weight:700; margin-bottom:10px}
+  .now-tag .pulse{width:8px;height:8px;border-radius:50%;background:var(--point);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (prefers-reduced-motion: reduce){.now-tag .pulse{animation:none}}
+  .now h2{margin:0 0 6px; font-size:clamp(19px,3vw,26px); font-weight:700; line-height:1.35}
+  .now p{margin:0; color:var(--sub); font-size:14px; max-width:720px}
+  .now ul{margin:14px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px}
+  .now li{display:flex; gap:10px; align-items:baseline; font-size:14px}
+  .now li .d{flex:0 0 auto; font-size:12px; color:var(--point); font-weight:700; min-width:52px}
+
+  .radar{margin:26px 0 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px}
+  .radar-card{background:var(--card); border:1px solid var(--line-soft); border-radius:2px; padding:14px 16px; box-shadow:var(--shadow); border-top:2px solid var(--point)}
+  .radar-card .dd{font-size:11px; letter-spacing:.12em; font-weight:700; color:var(--point); text-transform:uppercase}
+  .radar-card .t{font-size:14.5px; font-weight:500; margin:3px 0 1px; line-height:1.4}
+  .radar-card .m{font-size:12.5px; color:var(--sub)}
+
+  .filters{position:sticky; top:0; z-index:5; background:var(--bg); padding:16px 0 14px; margin-top:40px;
+    border-bottom:1px solid var(--line-soft); display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+  .chip{border:1px solid var(--line); background:transparent; color:var(--sub); border-radius:999px;
+    padding:5px 14px 6px; font-size:12.5px; font-family:inherit; cursor:pointer; letter-spacing:.02em; transition:all .15s}
+  .chip .dot{display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--point); margin-right:7px; vertical-align:1px}
+  .chip.on{background:var(--ink); border-color:var(--ink); color:var(--chip-on)}
+  .chip:focus-visible{outline:2px solid var(--point); outline-offset:2px}
+
+  .month{padding:44px 0 8px}
+  .month-head{display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; border-bottom:1px solid var(--ink); padding-bottom:12px; margin-bottom:22px}
+  .month-num{font-size:clamp(36px,5.4vw,52px); line-height:1; font-weight:700; color:var(--point)}
+  .month-meta .y{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--sub)}
+  .month-meta .theme{font-size:15px; font-weight:700; margin-top:2px}
+  .month-meta .theme .super{color:var(--point)}
+  .month-note{margin-left:auto; font-size:12.5px; color:var(--sub); max-width:380px; text-align:right}
+  @media (max-width:640px){.month-note{margin-left:0; text-align:left}}
+
+  .events{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:14px}
+  .empty-month{grid-column:1/-1; border:1px dashed var(--line); border-radius:2px; padding:18px 20px; color:var(--sub); font-size:13px; letter-spacing:.02em}
+  .ev{background:var(--card); border:1px solid var(--line-soft); border-left:3px solid var(--point); border-radius:2px;
+    padding:16px 18px 15px; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:8px}
+  .ev.past{opacity:var(--dim)}
+  .ev.hidden{display:none}
+  .ev-top{display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .ev-cat{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--point)}
+  .ev-dday{font-size:11px; font-weight:700; padding:2px 9px 3px; border-radius:999px; border:1px solid var(--line); color:var(--sub); white-space:nowrap}
+  .ev-dday.live{background:var(--live-bg); border-color:transparent; color:var(--live)}
+  .ev-dday.soon{background:var(--point-soft); border-color:transparent; color:var(--point)}
+  .ev h3{margin:0; font-size:17px; font-weight:500; line-height:1.4; letter-spacing:-.01em}
+  .ev .when{font-size:12.5px; color:var(--sub)}
+  .ev .when b{color:var(--ink); font-weight:500}
+  .ev .approx{font-size:10.5px; color:var(--sub); border:1px solid var(--line); border-radius:3px; padding:0 5px; margin-left:6px; letter-spacing:.05em}
+  .ev .angles{border-top:1px dashed var(--line); margin-top:4px; padding-top:9px; display:flex; flex-direction:column; gap:6px}
+  .ev .angle{font-size:12.8px; color:var(--sub); line-height:1.6}
+  .ev .angle b{font-weight:700; color:var(--ink); font-size:11px; letter-spacing:.1em; margin-right:5px}
+  .ev .angle.prep b{color:var(--point)}
+
+  .playbook{margin-top:70px; border-top:1px solid var(--ink); padding-top:34px}
+  .pb-eyebrow{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--point); font-weight:700}
+  .playbook h2{margin:8px 0 6px; font-weight:700; font-size:clamp(24px,3.6vw,34px); line-height:1.2}
+  .playbook > p{color:var(--sub); max-width:660px; margin:0 0 26px; font-size:14.5px}
+  .pb-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(185px,1fr)); gap:12px}
+  .pb{background:var(--card); border:1px solid var(--line-soft); border-top:2px solid var(--point); border-radius:2px; padding:18px; box-shadow:var(--shadow)}
+  .pb .d{font-size:13px; color:var(--point); font-weight:700; letter-spacing:.08em}
+  .pb .t{font-weight:700; font-size:14.5px; margin:6px 0 4px}
+  .pb p{margin:0; font-size:13px; color:var(--sub); line-height:1.6}
+
+  footer{margin-top:60px; padding-top:18px; border-top:1px solid var(--line-soft); display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    font-size:11.5px; color:var(--sub); letter-spacing:.06em}
+  footer .brand{color:var(--point); font-weight:700}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="byline"><span class="cap">Calendar by</span><img src="https://jhkim-lgtm.github.io/industry-calendars/logo-1club.png" alt="1%CLUB"></div>
+    <div class="eyebrow">
+      <span><b>SHINSEGAE</b>&nbsp; RETAIL INTELLIGENCE</span>
+      <span id="today-label" class="mono"></span>
+    </div>
+    <h1 class="disp"><span class="en">Sale · Gifting · Trend · Culture</span>백화점 마케터의 1년</h1>
+    <p class="lede">백화점 마케터가 반드시 알고 있어야 할 세일·명절 기프팅·패션 트렌드·컬처 집객 모먼트를 한눈에. 이벤트마다 마케팅 앵글과 준비 타이밍을 함께 담았습니다.</p>
+
+    <div class="now">
+      <div class="now-tag"><span class="pulse"></span>이번 주 시의성 브리핑</div>
+      <h2 class="disp" id="now-title"></h2>
+      <p id="now-sub"></p>
+      <ul id="now-list"></ul>
+    </div>
+
+    <div class="radar" id="radar"></div>
+  </header>
+
+  <nav class="filters" id="filters" aria-label="카테고리 필터"></nav>
+
+  <main id="months"></main>
+
+  <section class="playbook">
+    <div class="pb-eyebrow">Operating Rhythm</div>
+    <h2 class="disp">시즌 MD·마케팅 리듬</h2>
+    <p>백화점 매출은 명절과 시즌의 반복입니다. 선물세트는 사전예약이 승부처이고, 시즌 데코와 팝업은 집객이 곧 매출로 이어지는 장치입니다.</p>
+    <div class="pb-grid">
+      <div class="pb"><div class="d">D-60</div><div class="t">시즌 MD 확정</div><p>명절 선물세트·시즌 기획전 상품 구성과 가격 확정. 브랜드사 협의와 물량 계약 마감.</p></div>
+      <div class="pb"><div class="d">D-30</div><div class="t">사전예약 오픈</div><p>선물세트 사전예약 판매 시작 — 명절 매출의 절반이 여기서 결정. 얼리버드 혜택으로 초기 물량 소진.</p></div>
+      <div class="pb"><div class="d">D-14</div><div class="t">본판매 & 콘텐츠</div><p>본판매 전환, 시즌 비주얼·팝업·SNS 캠페인 총가동. 점별 데코·집객 이벤트 오픈.</p></div>
+      <div class="pb"><div class="d">D-DAY</div><div class="t">시즌 피크 운영</div><p>피크 주간 현장 운영 — 대기 관리·재고 실시간 대응. 화제성 팝업은 이 주간의 줄이 곧 콘텐츠.</p></div>
+      <div class="pb"><div class="d">D+7</div><div class="t">리캡 & 다음 시즌</div><p>카테고리별 실적 리뷰, VIP 구매 데이터 분석 → 다음 시즌 MD와 초청 마케팅에 반영.</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Prepared by <span class="brand">1%CLUB</span> for SHINSEGAE — Retail Intelligence</span>
+    <span>날짜는 각 주최측 공식 발표 기준 · <span class="mono">±</span> 표기는 예상 시기(공식 미발표) · 기준일 <span class="mono" id="foot-date"></span></span>
+  </footer>
+</div>
+
+<script>
+const CATS = {
+  sale:{label:'세일·프로모션'},
+  gift:{label:'명절·기프팅'},
+  trend:{label:'패션·뷰티 트렌드'},
+  culture:{label:'아트·컬처 집객'},
+  season:{label:'시즌 모먼트'},
+};
+
+/* approx:true = 공식 미발표, 예년 패턴 기반 예상 시기 */
+const EVENTS = [
+  // ── 2026.07~08 ──
+  {s:'2026-07-01', e:'2026-07-26', cat:'sale', title:'여름 정기세일 & 바캉스 시즌', place:'전점', approx:true,
+   angle:'여름 세일 + 리조트웨어·물놀이 카테고리 피크. 휴가 직전 소비의 마지막 관문.',
+   prep:'8월 비수기 브릿지 기획전을 지금 준비.'},
+  {s:'2026-08-13', e:'2026-09-13', cat:'gift', title:'추석 선물세트 사전예약', place:'전점·온라인', approx:true,
+   angle:'명절 매출의 승부처 — 사전예약 얼리버드가 전체 세트 매출의 절반을 만든다. 프리미엄 한우·굴비·와인 라인업이 언론 보도 소재.',
+   prep:'세트 구성·가격은 7월 말까지 확정 (D-60 원칙).'},
+  {s:'2026-08-22', e:'2026-08-25', cat:'trend', title:'서울뷰티위크', place:'서울 DDP',
+   angle:'K-뷰티 트렌드 스카우팅 — 하반기 뷰티관 팝업·입점 브랜드 발굴 소스.',
+   prep:'—'},
+
+  // ── 2026.09 ──
+  {s:'2026-09-01', e:'2026-09-07', cat:'trend', title:'서울패션위크 S/S 2027', place:'서울 DDP',
+   angle:'K-디자이너 트렌드 — 신진 브랜드 팝업·편집숍 기획의 원천.',
+   prep:'—'},
+  {s:'2026-09-02', e:'2026-09-06', cat:'culture', title:'서울 아트위크 — Kiaf × Frieze Seoul', place:'서울 코엑스',
+   angle:'백화점 아트마케팅의 정점 주간 — VIP 아트 클래스·전시 연계·아트 상품 기획전으로 하이엔드 고객 접점 확대.',
+   prep:'VIP 초청·아트 팝업은 8월 초까지 확정 (D-30).'},
+  {s:'2026-09-10', e:'2026-10-06', cat:'trend', title:'글로벌 패션먼스 S/S 2027', place:'뉴욕→파리',
+   angle:'다음 시즌 트렌드의 원천 — 바잉·VMD·마케팅 캘린더가 여기서 시작된다.',
+   prep:'쇼 직후 트렌드 리포트를 시즌 기획전 컨셉으로 연결.'},
+  {s:'2026-09-14', e:'2026-09-26', cat:'gift', title:'추석 본판매 → 명절 연휴 (9/24–26)', place:'전점',
+   angle:'명절 피크 — 식품관·선물세트 연중 최대 구간. 연휴 직전 3일이 최종 스퍼트.',
+   prep:'막판 수요 대응 재고·배송 체계 점검.'},
+  {s:'2026-09-28', e:'2026-10-11', cat:'sale', title:'가을 정기세일', place:'전점', approx:true,
+   angle:'F/W 신상품 시즌 개막 세일 — 아우터·부츠 얼리 수요 선점.',
+   prep:'—'},
+
+  // ── 2026.10 ──
+  {s:'2026-10-17', e:'2026-11-15', cat:'season', title:'가을 웨딩·혼수 시즌', place:'전국',
+   angle:'혼수 가전·리빙·예물 상담 피크 — 웨딩멤버스 마케팅 최적기.',
+   prep:'—'},
+  {s:'2026-10-24', e:'2026-11-30', cat:'trend', title:'홀리데이 뷰티 컬렉션 시즌', place:'뷰티관',
+   angle:'어드벤트 캘린더·홀리데이 리미티드 대전 — 뷰티관 연중 최대 화제성 구간.',
+   prep:'브랜드별 입고·단독 구성 협의는 9월 마감.'},
+  {s:'2026-10-26', e:'2026-10-31', cat:'season', title:'핼러윈 위크', place:'전점',
+   angle:'F&B·키즈·팝업 집객 모먼트 — 포토존이 곧 SNS 확산 장치.',
+   prep:'—'},
+
+  // ── 2026.11 ──
+  {s:'2026-11-05', e:'2026-12-31', cat:'season', title:'본점 미디어 파사드 점등', place:'본점·강남점 외', approx:true,
+   angle:'신세계 본점 미디어 파사드는 국내 최대 크리스마스 명물 — 점등과 동시에 서울 연말 사진의 배경이 된다. 연말 집객·브랜딩의 엔진.',
+   prep:'파사드·미디어 아트는 상반기 발주, 점등식 프레스는 10월 확정.'},
+  {s:'2026-11-01', e:'2026-11-30', cat:'sale', title:'코리아세일페스타 + 광군제(11/11)', place:'전국', approx:true,
+   angle:'11월은 연중 최대 쇼핑의 달 — 블프까지 이어지는 프로모션 릴레이.',
+   prep:'—'},
+  {s:'2026-11-19', e:'2026-11-19', cat:'season', title:'수능 — 수험생 마케팅', place:'전국',
+   angle:'수험표 할인·수험생 보상 소비(디지털·패션·뷰티) — 시험 직후 주말이 피크.',
+   prep:'수험생 프로모션 11월 초 오픈.'},
+  {s:'2026-11-27', e:'2026-11-30', cat:'sale', title:'블랙프라이데이 위크', place:'전점·온라인',
+   angle:'연말 세일 대전의 정점 — 가전·패션 특가전.',
+   prep:'—'},
+
+  // ── 2026.12 ──
+  {s:'2026-12-01', e:'2026-12-25', cat:'gift', title:'크리스마스 기프팅 피크', place:'전점',
+   angle:'주얼리·향수·리빙 선물 수요 연중 최대 + 식품관 케이크 대전. 집객(데코)과 객단가(기프팅)가 동시에 오르는 유일한 달.',
+   prep:'기프트 가이드·카운터 지원 11월 중순부터.'},
+  {s:'2026-12-14', e:'2026-12-31', cat:'season', title:'연말 VIP 시즌 (등급 산정·초청)', place:'전점',
+   angle:'연간 구매 마감 앞 VIP 막판 실적 집중 구간 — 등급 유지 니즈가 12월 객단가를 끌어올린다.',
+   prep:'내년 VIP 라운지·혜택 개편안은 12월 중 커뮤니케이션.'},
+
+  // ── 2027.01 ──
+  {s:'2027-01-02', e:'2027-01-31', cat:'sale', title:'신년 세일', place:'전점', approx:true,
+   angle:'이월 정리 + 새해 소비 — 겨울 막바지 수요.',
+   prep:'—'},
+  {s:'2027-01-07', e:'2027-02-04', cat:'gift', title:'설 선물세트 사전예약', place:'전점·온라인', approx:true,
+   angle:'설 매출의 승부처 — 사전예약 중심 판매 구조.',
+   prep:'세트 확정은 12월 중 (D-60).'},
+
+  // ── 2027.02 ──
+  {s:'2027-02-01', e:'2027-02-09', cat:'gift', title:'설 본판매 → 설 연휴 (2/6–9)', place:'전점',
+   angle:'명절 피크 + 4일 연휴 — 식품관·선물세트 집중 구간.',
+   prep:'—'},
+  {s:'2027-02-10', e:'2027-03-07', cat:'season', title:'졸업·입학 선물 시즌', place:'전점',
+   angle:'디지털·시계·가방 — 새 출발 선물 수요. 밸런타인(2/14)과 겹치는 기프팅 연속 구간.',
+   prep:'—'},
+
+  // ── 2027.03 ──
+  {s:'2027-03-14', e:'2027-03-14', cat:'season', title:'화이트데이', place:'전점',
+   angle:'디저트·주얼리 기프팅 — 식품관 팝업 모먼트.',
+   prep:'—'},
+  {s:'2027-03-26', e:'2027-04-11', cat:'sale', title:'봄 정기세일', place:'전점', approx:true,
+   angle:'S/S 시즌 개막 — 패션 신상품 수요 선점.',
+   prep:'—'},
+
+  // ── 2027.04 ──
+  {s:'2027-04-01', e:'2027-04-12', cat:'season', title:'벚꽃 시즌 — 봄 팝업·데코', place:'전점', approx:true,
+   angle:'봄 비주얼 피크 — 옥상정원·포토존·플라워 팝업 집객.',
+   prep:'개화 예보 확인 후 콘텐츠 일정 확정.'},
+  {s:'2027-04-10', e:'2027-06-13', cat:'season', title:'봄 웨딩·혼수 시즌', place:'전국',
+   angle:'혼수·예물 상담 피크.',
+   prep:'—'},
+
+  // ── 2027.05 ──
+  {s:'2027-05-01', e:'2027-05-09', cat:'gift', title:'가정의 달 골든위크 (어린이날·어버이날)', place:'전점',
+   angle:'백화점 상반기 최대 기프팅 구간 — 키즈·건강식품·패션잡화 총출동.',
+   prep:'가정의 달 기획전은 3월 말 확정, 4월 초 오픈.'},
+
+  // ── 2027.06~07 ──
+  {s:'2027-06-25', e:'2027-07-25', cat:'sale', title:'여름 정기세일 & 바캉스 시즌', place:'전점', approx:true,
+   angle:'여름 세일 + 리조트·수영복·선케어 피크.',
+   prep:'—'},
+
+  // ── 2027.08 ──
+  {s:'2027-08-05', e:'2027-09-05', cat:'gift', title:'추석 선물세트 사전예약', place:'전점·온라인', approx:true,
+   angle:'추석(9/15) 대비 사전예약 — 명절 매출의 승부처.',
+   prep:'세트 확정 7월 중 (D-60).'},
+  {s:'2027-08-20', e:'2027-08-24', cat:'trend', title:'서울뷰티위크 2027', place:'서울', approx:true,
+   angle:'K-뷰티 트렌드 스카우팅.',
+   prep:'—'},
+
+  // ── 2027.09 ──
+  {s:'2027-09-01', e:'2027-09-05', cat:'culture', title:'서울 아트위크 — Kiaf × Frieze Seoul 2027', place:'서울 코엑스', approx:true,
+   angle:'백화점 아트마케팅 정점 주간 — VIP 접점 확대.',
+   prep:'—'},
+  {s:'2027-09-06', e:'2027-09-16', cat:'gift', title:'추석 본판매 → 명절 연휴 (9/14–16)', place:'전점',
+   angle:'명절 피크 — 식품관·선물세트 최대 구간.',
+   prep:'—'},
+  {s:'2027-09-27', e:'2027-10-10', cat:'sale', title:'가을 정기세일', place:'전점', approx:true,
+   angle:'F/W 개막 세일.',
+   prep:'—'},
+
+  // ── 2027.10~12 ──
+  {s:'2027-10-16', e:'2027-11-14', cat:'season', title:'가을 웨딩·혼수 시즌', place:'전국',
+   angle:'혼수·예물 피크.',
+   prep:'—'},
+  {s:'2027-10-23', e:'2027-11-30', cat:'trend', title:'홀리데이 뷰티 컬렉션 시즌', place:'뷰티관',
+   angle:'홀리데이 리미티드 대전.',
+   prep:'입고 협의 9월 마감.'},
+  {s:'2027-11-04', e:'2027-12-31', cat:'season', title:'본점 미디어 파사드 점등', place:'본점·강남점 외', approx:true,
+   angle:'연말 집객의 엔진 — 점등식부터 SNS 인증 행렬.',
+   prep:'파사드 발주는 상반기.'},
+  {s:'2027-11-01', e:'2027-11-30', cat:'sale', title:'코리아세일페스타 + 광군제 + 블프(11/26)', place:'전국', approx:true,
+   angle:'연중 최대 쇼핑의 달.',
+   prep:'—'},
+  {s:'2027-11-18', e:'2027-11-18', cat:'season', title:'수능 — 수험생 마케팅', place:'전국', approx:true,
+   angle:'수험표 할인·보상 소비 시즌.',
+   prep:'—'},
+  {s:'2027-12-01', e:'2027-12-25', cat:'gift', title:'크리스마스 기프팅 피크', place:'전점',
+   angle:'기프팅 + 케이크 대전 + 데코 집객.',
+   prep:'—'},
+  {s:'2027-12-14', e:'2027-12-31', cat:'season', title:'연말 VIP 시즌', place:'전점',
+   angle:'등급 산정 마감 — 막판 실적 집중.',
+   prep:'—'},
+];
+
+const MONTH_THEMES = {
+  '2026-07':{theme:'여름 세일 시즌', note:'추석 세트 확정(D-60)이 이달의 숙제.'},
+  '2026-08':{theme:'추석 사전예약 오픈', super:true, note:'명절 매출의 절반이 사전예약에서 나온다.'},
+  '2026-09':{theme:'슈퍼먼스 — 추석 × 아트위크 × 패션먼스', super:true},
+  '2026-10':{theme:'가을 세일 & 홀리데이 준비'},
+  '2026-11':{theme:'쇼핑 슈퍼먼스 — 점등 × 세일 릴레이', super:true},
+  '2026-12':{theme:'크리스마스 & VIP 시즌', super:true},
+  '2027-01':{theme:'신년 세일 & 설 사전예약'},
+  '2027-02':{theme:'설 명절 & 졸업·입학'},
+  '2027-03':{theme:'봄 시즌 개막'},
+  '2027-04':{theme:'벚꽃 & 웨딩 시즌'},
+  '2027-05':{theme:'가정의 달 — 상반기 최대 기프팅', super:true},
+  '2027-06':{theme:'여름 세일 개막'},
+  '2027-07':{theme:'바캉스 시즌'},
+  '2027-08':{theme:'추석 사전예약 오픈', super:true},
+  '2027-09':{theme:'슈퍼먼스 — 추석 × 아트위크', super:true},
+  '2027-10':{theme:'가을 세일 & 홀리데이 준비'},
+  '2027-11':{theme:'쇼핑 슈퍼먼스 — 점등 × 세일 릴레이', super:true},
+  '2027-12':{theme:'크리스마스 & VIP 시즌', super:true},
+};
+
+const $=s=>document.querySelector(s);
+const fmt=(d)=>`${d.getMonth()+1}/${d.getDate()}`;
+const parse=s=>{const[a,b,c]=s.split('-').map(Number);return new Date(a,b-1,c);};
+const today=new Date(); today.setHours(0,0,0,0);
+const DAY=86400000;
+const MONTH_NAMES=['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+/* 롤링 윈도우: 이번 달 1일 ~ 내년 12월 31일, 전 개월 표시 */
+const winStart=new Date(today.getFullYear(), today.getMonth(), 1);
+const winEnd=new Date(today.getFullYear()+1, 11, 31);
+const visible=EVENTS.filter(ev=>parse(ev.e)>=winStart && parse(ev.s)<=winEnd);
+
+const dateLabel=`${today.getFullYear()}.${String(today.getMonth()+1).padStart(2,'0')}.${String(today.getDate()).padStart(2,'0')}`;
+$('#today-label').textContent = `${dateLabel} 기준`;
+$('#foot-date').textContent = dateLabel;
+
+function status(ev){
+  const s=parse(ev.s), e=parse(ev.e);
+  if(today>e) return {k:'past'};
+  if(today>=s) return {k:'live', label:'LIVE'};
+  const d=Math.round((s-today)/DAY);
+  return {k:d<=30?'soon':'future', label:`D-${d}`, d};
+}
+
+(function(){
+  const active=visible.map(ev=>({ev,st:status(ev)})).filter(x=>x.st.k==='live'||(x.st.k!=='past'&&x.st.d<=10));
+  const list=$('#now-list');
+  if(active.length===0){
+    $('#now-title').textContent='조용한 주간 — 준비의 시간';
+    $('#now-sub').textContent='이번 주 임박한 대형 이벤트는 없습니다. 아래 레이더의 다가오는 이벤트를 미리 준비하세요.';
+  }else{
+    const live=active.filter(x=>x.st.k==='live').length;
+    $('#now-title').textContent = live>0 ? '지금 진행 중인 시즌' : '이번 주, 준비할 것들';
+    $('#now-sub').textContent='진행 중이거나 10일 안에 시작되는 이벤트입니다. 판매·콘텐츠·현장 운영 준비를 점검하세요.';
+    active.sort((a,b)=>parse(a.ev.s)-parse(b.ev.s)).forEach(({ev,st})=>{
+      const li=document.createElement('li');
+      li.innerHTML=`<span class="d mono">${st.label}</span><span><b>${ev.title}</b> · ${fmt(parse(ev.s))}–${fmt(parse(ev.e))} ${ev.place}</span>`;
+      list.appendChild(li);
+    });
+  }
+})();
+
+(function(){
+  const up=visible.map(ev=>({ev,st:status(ev)})).filter(x=>x.st.k==='soon'||x.st.k==='future')
+    .sort((a,b)=>parse(a.ev.s)-parse(b.ev.s)).slice(0,4);
+  const radar=$('#radar');
+  up.forEach(({ev,st})=>{
+    const c=document.createElement('div'); c.className='radar-card';
+    c.innerHTML=`<div class="dd mono">${st.label} · ${CATS[ev.cat].label}</div>
+      <div class="t">${ev.title}</div>
+      <div class="m">${fmt(parse(ev.s))}–${fmt(parse(ev.e))} · ${ev.place}</div>`;
+    radar.appendChild(c);
+  });
+})();
+
+(function(){
+  const f=$('#filters');
+  const mk=(key,label,dot)=>{
+    const b=document.createElement('button'); b.className='chip'+(key==='all'?' on':''); b.dataset.cat=key;
+    b.innerHTML=(dot?'<span class="dot"></span>':'')+label;
+    b.addEventListener('click',()=>{
+      f.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x.dataset.cat===key));
+      document.querySelectorAll('.ev').forEach(el=>el.classList.toggle('hidden',key!=='all'&&el.dataset.cat!==key));
+      document.querySelectorAll('.month').forEach(m=>{
+        const any=[...m.querySelectorAll('.ev')].some(el=>!el.classList.contains('hidden'));
+        m.style.display=(key==='all'||any)?'':'none';
+      });
+    });
+    f.appendChild(b);
+  };
+  mk('all','전체 보기',false);
+  Object.entries(CATS).forEach(([k,v])=>mk(k,v.label,true));
+})();
+
+(function(){
+  const byMonth={};
+  const winStartKey=`${winStart.getFullYear()}-${String(winStart.getMonth()+1).padStart(2,'0')}`;
+  visible.forEach(ev=>{
+    let key=ev.s.slice(0,7);
+    if(key<winStartKey) key=winStartKey;
+    (byMonth[key]=byMonth[key]||[]).push(ev);
+  });
+  const root=$('#months');
+  const allKeys=[];
+  for(let d=new Date(winStart); d<=winEnd; d=new Date(d.getFullYear(), d.getMonth()+1, 1)){
+    allKeys.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`);
+  }
+  allKeys.forEach(key=>{
+    const [y,m]=key.split('-').map(Number);
+    const meta=MONTH_THEMES[key]||{theme:''};
+    const sec=document.createElement('section'); sec.className='month';
+    sec.innerHTML=`<div class="month-head">
+        <div class="month-num disp">${String(m).padStart(2,'0')}</div>
+        <div class="month-meta">
+          <div class="y mono">${MONTH_NAMES[m-1]} ${y}</div>
+          <div class="theme">${meta.super?'<span class="super">◆ </span>':''}${meta.theme||''}</div>
+        </div>
+        ${meta.note?`<div class="month-note">${meta.note}</div>`:''}
+      </div>
+      <div class="events"></div>`;
+    const grid=sec.querySelector('.events');
+    const evs=byMonth[key]||[];
+    if(evs.length===0){
+      grid.innerHTML='<div class="empty-month">이 달은 예정된 대형 이벤트가 없습니다 — 다음 시즌을 준비하는 구간.</div>';
+    }
+    evs.sort((a,b)=>parse(a.s)-parse(b.s)).forEach(ev=>{
+      const st=status(ev);
+      const card=document.createElement('article');
+      card.className='ev'+(st.k==='past'?' past':'');
+      card.dataset.cat=ev.cat;
+      const dday= st.k==='past' ? `<span class="ev-dday">종료</span>`
+        : st.k==='live' ? `<span class="ev-dday live">● LIVE</span>`
+        : `<span class="ev-dday ${st.k==='soon'?'soon':''} mono">${st.label}</span>`;
+      const sd=parse(ev.s), ed=parse(ev.e);
+      const range = ev.s===ev.e ? fmt(sd) : `${fmt(sd)} – ${fmt(ed)}`;
+      card.innerHTML=`
+        <div class="ev-top"><span class="ev-cat">${CATS[ev.cat].label}</span>${dday}</div>
+        <h3>${ev.title}</h3>
+        <div class="when"><b class="mono">${range}</b> · ${ev.place}${ev.approx?'<span class="approx">± 예상 시기</span>':''}</div>
+        <div class="angles">
+          <div class="angle"><b>MARKETING</b>${ev.angle}</div>
+          ${ev.prep&&ev.prep!=='—'?`<div class="angle prep"><b>PREP</b>${ev.prep}</div>`:''}
+        </div>`;
+      grid.appendChild(card);
+    });
+    root.appendChild(sec);
+  });
+})();
+</script>
+</body>
+</html>
